@@ -14,7 +14,10 @@ try:
     found_any = False
     for m in genai.list_models():
         if 'generateContent' in m.supported_generation_methods:
-            print(f"- Found supported model: {m.name}")
+            print(f"- Generative: {m.name}")
+            found_any = True
+        if 'embedContent' in m.supported_generation_methods:
+            print(f"- Embedding:  {m.name}")
             found_any = True
             
     if not found_any:

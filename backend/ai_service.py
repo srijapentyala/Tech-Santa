@@ -33,9 +33,9 @@ def get_gemini_model():
     try:
         genai.configure(api_key=GEMINI_API_KEY)
         
-        # Preferred models in order
-        preferred_models = ["models/gemini-1.5-flash", "models/gemini-1.5-pro", "models/gemini-pro"]
-        valid_model_name = "models/gemini-1.5-flash" # Default fallback
+        # Preferred models in order - Updated for Feb 2026
+        preferred_models = ["models/gemini-2.0-flash", "models/gemini-2.5-flash", "models/gemini-1.5-flash"]
+        valid_model_name = "models/gemini-2.0-flash" # Default fallback
         
         # In a real production scenario, we might want to validate the model once
         # possibly list_models() here but catch errors to avoid blocking startup
@@ -62,7 +62,7 @@ def get_text_embedding(text: str) -> list[float]:
     try:
         genai.configure(api_key=GEMINI_API_KEY)
         result = genai.embed_content(
-            model="models/embedding-001",
+            model="models/gemini-embedding-001",
             content=text,
             task_type="retrieval_document",
             title="Wish Embedding"
